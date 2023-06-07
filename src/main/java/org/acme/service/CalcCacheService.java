@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.acme.CalcAction;
 import org.acme.CalcResponse;
@@ -40,7 +41,7 @@ public class CalcCacheService {
             log.info("Cache miss. Calling service.");
         }
 
-        CalcResponse.CalcResponseBuilder responseBuilder = CalcResponse.builder()
+        CalcResponse response = CalcResponse.builder()
                 .argOne(numOne)
                 .action(action)
                 .argTwo(numTwo)
@@ -48,8 +49,17 @@ public class CalcCacheService {
                         numOne,
                         action,
                         numTwo
-                ));
+                ))
+                .build();
 
-        return responseBuilder.build();
+        this.entityManager.persist(response);
+
+        return response;
+    }
+
+    @Transactional
+    public CalcResponse addToCache(CalcResponse response){
+        this.entityManager.persist(response);
+        return response;
     }
 }

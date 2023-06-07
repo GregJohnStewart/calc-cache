@@ -1,0 +1,4 @@
+quarkus:
+  rest-client:
+    CalculatorService:
+      url: ${quarkus.mockserver.endpoint}

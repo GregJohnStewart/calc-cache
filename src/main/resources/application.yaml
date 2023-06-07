@@ -1,7 +1,14 @@
 quarkus:
   datasource:
-    db-kind: mssql
+    db-kind: mysql
+
   rest-client:
     CalculatorService:
       url:
       scope: jakarta.inject.Singleton
+
+"%dev":
+   quarkus:
+     rest-client:
+       CalculatorService:
+         url: ${quarkus.mockserver.endpoint}
