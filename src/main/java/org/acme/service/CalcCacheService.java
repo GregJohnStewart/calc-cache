@@ -22,6 +22,7 @@ public class CalcCacheService {
     @Inject
     EntityManager entityManager;
 
+    @Transactional
     public CalcResponse calculate(
             Double numOne,
             CalcAction action,
