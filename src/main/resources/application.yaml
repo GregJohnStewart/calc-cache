@@ -3,7 +3,7 @@ quarkus:
     db-kind: mysql
 
   rest-client:
-    CalculatorService:
+    calc-service:
       url:
       scope: jakarta.inject.Singleton
 
