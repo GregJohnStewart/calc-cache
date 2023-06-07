@@ -4,10 +4,12 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import lombok.extern.slf4j.Slf4j;
 import org.acme.CalcAction;
 import org.acme.CalcResponse;
 import org.acme.service.CalcCacheService;
 
+@Slf4j
 @Path("/calculator")
 public class CacheResource {
 
@@ -17,12 +19,13 @@ public class CacheResource {
     @Path("{numOne}/{action}/{numTwo}")
     @GET
     public CalcResponse calculate(
-            @PathParam("numOne") Double numOne,
+            @PathParam("numOne") String numOne,
             @PathParam("action") CalcAction action,
-            @PathParam("numTwo") Double numTwo
+            @PathParam("numTwo") String numTwo
     ) {
+        log.info("Calculating.");
         return this.calcCacheService.calculate(
-                numOne, action, numTwo
+                Double.parseDouble(numOne), action, Double.parseDouble(numTwo)
         );
     }
 }

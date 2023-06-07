@@ -12,8 +12,8 @@ public interface CalculatorService {
     @Path("{numOne}/{action}/{numTwo}")
     @GET
     Double calculate(
-            @PathParam("numOne") Double numOne,
+            @PathParam("numOne") String numOne,
             @PathParam("action") CalcAction action,
-            @PathParam("numTwo") Double numTwo
+            @PathParam("numTwo") String numTwo
     );
 }

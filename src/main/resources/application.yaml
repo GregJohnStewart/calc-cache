@@ -11,4 +11,5 @@ quarkus:
    quarkus:
      rest-client:
        CalculatorService:
-         url: ${quarkus.mockserver.endpoint}
+         url: http://microservice-dotnet-demo-pipelines.apps.cluster-8zb24.8zb24.sandbox2273.opentlc.com
+#         url: ${quarkus.mockserver.endpoint}

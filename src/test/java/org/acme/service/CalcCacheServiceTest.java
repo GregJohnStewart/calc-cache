@@ -29,6 +29,19 @@ public class CalcCacheServiceTest {
 
         this.calcCacheService.addToCache(response);
 
-        log.info("Persisted response: {}", response);
+        log.info("Persisted response 1: {}", response);
+    }
+    @Test
+    public void testAddCacheEntryTwo(){
+        CalcResponse response = CalcResponse.builder()
+                .argOne(1.0)
+                .action(CalcAction.ADD)
+                .argTwo(2.0)
+                .answer(3.0)
+                .build();
+
+        this.calcCacheService.addToCache(response);
+
+        log.info("Persisted response 2: {}", response);
     }
 }
