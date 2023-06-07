@@ -7,7 +7,7 @@ import org.acme.CalcAction;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @Path("/calculate")
-@RegisterRestClient
+@RegisterRestClient(configKey = "calc-service")
 public interface CalculatorService {
     @Path("{numOne}/{action}/{numTwo}")
     @GET
