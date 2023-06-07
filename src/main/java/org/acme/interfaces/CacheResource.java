@@ -10,7 +10,7 @@ import org.acme.CalcResponse;
 import org.acme.service.CalcCacheService;
 
 @Slf4j
-@Path("/calculator")
+@Path("/calculate")
 public class CacheResource {
 
     @Inject
