@@ -1,8 +1,17 @@
-# code-with-quarkus
+# calc-cache
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project is an example of a microservice. It directly interacts with https://github.com/GregJohnStewart/calc
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+
+Required configs to setup for runs:
+
+```
+QUARKUS_DATASOURCE_JDBC_URL: 'jdbc:mysql://<host>/<db>'
+quarkus.hibernate-orm.database.generation: drop-and-create
+quarkus.rest-client.calc-service.url: '<url to calc service>`
+```
+
 
 ## Running the application in dev mode
 
