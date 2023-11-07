@@ -7,6 +7,15 @@ quarkus:
       url:
       scope: jakarta.inject.Singleton
 
+mp:
+  messaging:
+    outgoing:
+      calculator-requests:
+        address: calculator-requests
+    incoming:
+      calculator-results:
+        address: calculator-results
+
 "%dev":
    quarkus:
      rest-client:

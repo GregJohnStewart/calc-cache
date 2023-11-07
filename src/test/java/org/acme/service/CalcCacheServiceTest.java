@@ -4,8 +4,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.CalcAction;
-import org.acme.CalcCacheEntry;
+import org.acme.service.pojo.CalcCacheEntry;
 import org.acme.service.pojo.CalcOp;
 import org.junit.jupiter.api.Test;
 

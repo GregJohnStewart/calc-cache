@@ -1,5 +1,6 @@
 package org.acme.service.pojo;
 
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
+@MappedSuperclass
 public class CalculationResult extends CalculationRequest {
     @NonNull
     private BigDecimal result;

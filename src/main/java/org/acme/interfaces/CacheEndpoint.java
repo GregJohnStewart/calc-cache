@@ -5,9 +5,10 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.CalcCacheEntry;
+import org.acme.service.pojo.CalcCacheEntry;
 import org.acme.service.CalcCacheService;
 import org.acme.service.pojo.CalcOp;
+import org.acme.service.pojo.CalculationRequest;
 
 import java.math.BigDecimal;
 
@@ -27,7 +28,7 @@ public class CacheEndpoint {
     ) {
         log.info("Calculating.");
         return this.calcCacheService.calculate(
-                numOne, action, numTwo
+                CalculationRequest.builder().numOne(numOne).numTwo(numTwo).op(action).build()
         );
     }
 }
