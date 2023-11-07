@@ -5,27 +5,29 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.CalcAction;
-import org.acme.CalcResponse;
+import org.acme.CalcCacheEntry;
 import org.acme.service.CalcCacheService;
+import org.acme.service.pojo.CalcOp;
+
+import java.math.BigDecimal;
 
 @Slf4j
 @Path("/calculate")
-public class CacheResource {
+public class CacheEndpoint {
 
     @Inject
     CalcCacheService calcCacheService;
 
     @Path("{numOne}/{action}/{numTwo}")
     @GET
-    public CalcResponse calculate(
-            @PathParam("numOne") String numOne,
-            @PathParam("action") CalcAction action,
-            @PathParam("numTwo") String numTwo
+    public CalcCacheEntry calculate(
+            @PathParam("numOne") BigDecimal numOne,
+            @PathParam("action") CalcOp action,
+            @PathParam("numTwo") BigDecimal numTwo
     ) {
         log.info("Calculating.");
         return this.calcCacheService.calculate(
-                Double.parseDouble(numOne), action, Double.parseDouble(numTwo)
+                numOne, action, numTwo
         );
     }
 }

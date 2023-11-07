@@ -5,8 +5,11 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.acme.CalcAction;
-import org.acme.CalcResponse;
+import org.acme.CalcCacheEntry;
+import org.acme.service.pojo.CalcOp;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
 
 @Slf4j
 @QuarkusTest
@@ -20,11 +23,11 @@ public class CalcCacheServiceTest {
 
     @Test
     public void testAddCacheEntry(){
-        CalcResponse response = CalcResponse.builder()
-                .argOne(1.0)
-                .action(CalcAction.ADD)
-                .argTwo(2.0)
-                .answer(3.0)
+        CalcCacheEntry response = CalcCacheEntry.builder()
+                .numOne(new BigDecimal("1.0"))
+                .op(CalcOp.ADD)
+                .numTwo(new BigDecimal("2.0"))
+                .result(new BigDecimal("3.0"))
                 .build();
 
         this.calcCacheService.addToCache(response);
@@ -33,11 +36,11 @@ public class CalcCacheServiceTest {
     }
     @Test
     public void testAddCacheEntryTwo(){
-        CalcResponse response = CalcResponse.builder()
-                .argOne(1.0)
-                .action(CalcAction.ADD)
-                .argTwo(2.0)
-                .answer(3.0)
+        CalcCacheEntry response = CalcCacheEntry.builder()
+                .numOne(new BigDecimal("1.0"))
+                .op(CalcOp.ADD)
+                .numTwo(new BigDecimal("2.0"))
+                .result(new BigDecimal("3.0"))
                 .build();
 
         this.calcCacheService.addToCache(response);
