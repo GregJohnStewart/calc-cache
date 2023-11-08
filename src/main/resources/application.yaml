@@ -4,7 +4,6 @@ quarkus:
 
   rest-client:
     calc-service:
-      url:
       scope: jakarta.inject.Singleton
 
 mp:
