@@ -1,6 +1,6 @@
 quarkus:
   datasource:
-    db-kind: mysql
+    db-kind: postgresql
 
   rest-client:
     calc-service:
