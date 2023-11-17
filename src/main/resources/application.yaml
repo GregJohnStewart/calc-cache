@@ -17,7 +17,9 @@ mp:
 
 "%dev":
    quarkus:
+     http:
+       port: 8081
      rest-client:
        calc-service:
-         url: http://microservice-dotnet-demo-pipelines.apps.cluster-8zb24.8zb24.sandbox2273.opentlc.com
+         url: http://localhost:8080
 #         url: ${quarkus.mockserver.endpoint}

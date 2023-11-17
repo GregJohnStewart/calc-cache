@@ -30,6 +30,7 @@ import java.util.Random;
 public class CalcCacheService {
 
     private static final Random RAND = new SecureRandom();
+    private static BigDecimal max = new BigDecimal("9001.0");
 
     @RestClient
     CalculatorService calculatorService;
@@ -108,7 +109,7 @@ public class CalcCacheService {
 
     @Scheduled(every="10s")
     void populateCache() {
-        BigDecimal max = new BigDecimal("9001.0");
+        log.info("Populating cache");
 
         this.quoteRequestEmitter.send(
                 CalculationRequest.builder()

@@ -12,8 +12,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import java.math.BigDecimal;
 
-@Path("/calculate")
-@RegisterRestClient(configKey = "calc-service")
+@RegisterRestClient(configKey = "calc-service", baseUri = "/calculate")
 public interface CalculatorService {
 
     @PUT
