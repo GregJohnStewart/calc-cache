@@ -2,6 +2,7 @@ package org.acme.service;
 
 import io.quarkus.scheduler.Scheduled;
 import io.smallrye.common.annotation.Blocking;
+import io.vertx.core.json.JsonObject;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -103,8 +104,9 @@ public class CalcCacheService {
 
     @Incoming("calculator-results")
     @Blocking
-    public void process(CalculationResult request) {
-        this.addToCache(request);
+    public void process(JsonObject resultJson) {
+        CalculationResult result = resultJson.mapTo(CalculationResult.class);
+        this.addToCache(result);
     }
 
     @Scheduled(every="10s")
