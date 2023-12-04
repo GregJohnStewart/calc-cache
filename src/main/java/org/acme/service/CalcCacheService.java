@@ -57,6 +57,7 @@ public class CalcCacheService {
                     .getSingleResult();
 
             if (response != null) {
+                log.info("Cache hit!");
                 return Optional.of(response);
             }
         } catch (NoResultException | NonUniqueResultException e) {
