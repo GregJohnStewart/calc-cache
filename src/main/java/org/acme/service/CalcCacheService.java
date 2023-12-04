@@ -60,7 +60,7 @@ public class CalcCacheService {
                 return Optional.of(response);
             }
         } catch (NoResultException | NonUniqueResultException e) {
-            log.info("Cache miss. Calling service.");
+            log.info("Cache miss.");
         }
         return Optional.empty();
     }
