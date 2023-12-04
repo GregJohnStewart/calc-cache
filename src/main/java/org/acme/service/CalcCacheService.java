@@ -105,6 +105,7 @@ public class CalcCacheService {
     @Incoming("calculator-results")
     @Blocking
     public void process(JsonObject resultJson) {
+        log.info("Got result from Queue: {}", resultJson);
         CalculationResult result = resultJson.mapTo(CalculationResult.class);
         this.addToCache(result);
     }
